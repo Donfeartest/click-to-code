@@ -1,0 +1,68 @@
+p,h2,h1,h3,h4,span {
+  color: #20C20E;
+}
+p {
+  display: inline;
+}
+body {
+  background-color: #191919;
+}
+
+#main {
+   position: relative;
+}
+#main:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity : 0.05;
+    z-index: -1;
+}
+
+#work {
+  border-radius: 40px;
+}
+
+.saveLoad a:active, a:visited {
+  color: #20C20E;
+}
+
+.mainp {
+  font-size: 10px;
+}
+.secondp {
+  font-size: 8px;
+}
+.autoclickers {
+  border-radius: 50px;
+}
+
+.upgradeblock {
+  padding: 5px;
+  display: block;
+  border: 2px solid #20C20E;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.bitcoinexc {
+  margin-left: 115px;
+  margin-bottom: 20px;
+}
+.main {
+  margin-top: 210px;
+}
+
+#copy {
+  margin-left: 45px;
+  opacity: 0.2;
+  font-size: 14px;
+  text-align: right;
+}
