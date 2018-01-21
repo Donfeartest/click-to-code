@@ -12,7 +12,6 @@ function update() {
 } if (bytecount >=1000) {
     document.getElementById('codeWritten').value = bytecount/1000 + " kilobytes";
   }
-  document.title = "Code: " + bytecount + " ";
 
   document.getElementById('moneyGot').value = money + " BTC";
 
