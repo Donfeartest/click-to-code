@@ -10,5 +10,5 @@ Version 1.0
 
 1. Game uploaded to Github pages.
 2. Added first upgrades.
-3. Game is more stable.
-4. Added save / load function.
+3. Designed/ Mobile optimized
+4. Added save / load function. ( Tested only in Chrome )
