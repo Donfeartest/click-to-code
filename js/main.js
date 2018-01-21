@@ -64,7 +64,7 @@ function findFriends() {
 
 function findQuestion() {
   if(bytecount >= (question+1)*30) {
-    bytespersecond = bytecount - ((question+1) * 30);
+    bytecount = bytecount - ((question+1) * 30);
     question += 1;
     update();
   }
