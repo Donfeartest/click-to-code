@@ -18,7 +18,7 @@ function update() {
       return newValue;
     }
     if (bytecount >= 1000) {
-        var suffixes = [" ", " Kilobytes", " Megabytes", " Gigabytes"," Terabytes"];
+        var suffixes = [" ", " Kilobytes", " Megabytes", " Gigabytes"," Terabytes", " Petabytes", " Exabytes", " Zettabytes"," Yottabytes"];
         var suffixNum = Math.floor( (""+bytecount).length/3 );
         var shortValue = '';
         for (var precision = 4; precision >= 3; precision--) {
@@ -91,17 +91,26 @@ setInterval(timer, 1000);
 
 
 function deadlineMode() {
-  if (bytecount <= 1000) {
-    document.getElementById("dlTrigger").style.display = 'block';
-  }
-  if (bytecount >= 1000) {
-  var random = ~~(Math.random() * (50-1) +1 );
-  if ( random > 25) {
-    bytecount = (bytecount-200)*multiplier;
-  } else {
-      bytecount = (bytecount+200)*multiplier;
-  }
-  }
+    if (bytecount <= 1500) {
+      document.getElementById("dlTrigger").style.display = 'block';
+    }
+    if (bytecount >= 1500) {
+    if (multiplier <= 5) {
+    var random = ~~(Math.random() * (50-1) +1 );
+    if ( random >= 25) {
+      bytecount = bytecount-(200*multiplier);
+    } if ( random < 25 ) {
+      bytecount = bytecount+(200*multiplier);
+    }
+    } if (multiplier > 5) {
+    var random = ~~(Math.random() * (50-1) +1 );
+    if ( random >= 25) {
+    bytecount = bytecount + (200*5);
+    } if ( random < 25) {
+    bytecount = bytecount - (200*5);
+    }
+    }
+    }
   update();
 }
 
