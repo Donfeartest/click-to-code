@@ -7,21 +7,22 @@
   <title>Click To Code</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="cssforjs.css">
 </head>
 <body>
   <div id="main">
     <div class="container mt-2">
       <div class="row">
-      <div class="col"><h1 class="ml-2">Cl1ck T0 C0d3 v.1.2</h1>
-      <p class="ml-4"id="bytespersecond">Your code is increasing by 0 bytes/s</p><br>
-      <a href="#" onclick="add()"><img src="img/work.png" id="work" alt="0"></a>
+      <div class="col"><h1 class="ml-2">Cl1ck T0 C0d3 v.1.3</h1>
+      <p class="ml-4" id="bytespersecond">Your code is increasing by 0 bytes/s</p><br>
+      <a href="#" id="mainclick" onclick="add()"><img src="img/work.png" id="work" alt="0"></a>
       <br>
       <div class="mt-3">
         <p>Your code weights:</p>
         <input type="text" class="form-control" id="codeWritten" disabled style="text-align:center" value="0 bytes"> <p>So far.</p><br><br>
         <div class="deadline">
           <input type="submit" class="form-control ml-1" onclick="deadlineMode()" value="DeadLine"><br>
-          <p class="secondp">Write your code faster, but you could make a mistake. <br>you need at least 500 bytes</p>
+          <p class="secondp mt-1" id="dlTrigger">Write your code faster, but you could make a mistake. <br>you need at least 1000 bytes</p>
         </div>
       </div>
       </div>
@@ -34,7 +35,7 @@
         </div>
         <div class="main">
           <div class="bitcoinexc">
-            <a href="#" onclick="changeBytes()"><img class="autoclickers" src="img/bitcoin.png" alt=""></a><br><p class="secondp">exchange BTC for code</p></div>
+            <a href="#" onclick="changeBytes()"><img class="autoclickers" src="img/bitcoin.png" alt=""></a><br><p class="secondp" id="exchanged">Exchange BTC for code</p></div>
           <p>You have:</p>
           <input type="text" class="form-control" id="moneyGot" disabled style="text-align:center" value="0 BTC"> <p>So far.</p>
         </div>
@@ -47,25 +48,44 @@
       <div class="col-6 col-lg-2">
           <h4 class="ml-2">Upgrades</h4>
           <br>
-          <div class="upgradeblock">
-          <p class="mainp">Ask friends to help with the code</p><br>
-          <a href="#" id="find" onclick="findFriends()"><img class="autoclickers" src="img/friend.png" alt="1"></a><br>
-          <p class="secondp" id="costFriends"> Bytes</p><br>
-          <p class="secondp" id="ammountFriends">You have 0 friends to help</p><br>
+          <div class="upgradeblock" id="previewMsg">
+          <p>Don't worry, when your code will get a bit better, you will see all those upgrades!</p></div>
+          <div class="upgradeblock" id="firstUp">
+            <p class="mainp">Grab coffee n snacks</p><br>
+            <a href="#" id="find" onclick="findSnacks()"><img class="autoclickers" src="img/cands.png" alt="1"></a><br>
+            <p class="secondp" id="costCoffee"> Bytes</p><br>
+            <p class="secondp" id="amountCoffee">You have 0 coffee n snacks</p><br>
+            <p class="secondp" id="persecondCoffee">Gives you 0 bytes/s</p>
           </div>
-          <div class="upgradeblock">
-          <p class="mainp">Searching on StuckOverFlood</p><br>
-          <a href="#" id="find" onclick="findQuestion()"><img class="autoclickers" src="img/searching.png" alt="2"></a><br>
-          <p class="secondp" id="costQuestion"> Bytes</p><br>
-          <p class="secondp" id="ammountQuestion">You have asked 0 questions</p><br>
+          <div class="upgradeblock" id="secondUp">
+            <p class="mainp">Ask friends to help</p><br>
+            <a href="#" id="find" onclick="findFriends()"><img class="autoclickers" src="img/friend.png" alt="2"></a><br>
+            <p class="secondp" id="costFriends"> Bytes</p><br>
+            <p class="secondp" id="amountFriends">You have 0 friends to help</p><br>
+            <p class="secondp" id="persecondFriends">Gives you 0 bytes/s</p>
           </div>
-          <div class="upgradeblock">
-          <p class="mainp">Attract sponsor</p><br>
-          <a href="#" id="attract" onclick="findSponsor()"><img class="autoclickers" src="img/sponsor.png" alt="3"></a><br>
-          <p class="secondp" id="costSponsor"> Bytes</p><br>
-          <p class="secondp" id="amountSponsors">You have 0 sponsors</p>
+          <div class="upgradeblock" id="thirdUp">
+            <p class="mainp">Searching on StuckOverFlood</p><br>
+            <a href="#" id="find" onclick="findQuestion()"><img class="autoclickers" src="img/searching.png" alt="3"></a><br>
+            <p class="secondp" id="costQuestion"> Bytes</p><br>
+            <p class="secondp" id="amountQuestion">You have asked 0 questions</p><br>
+            <p class="secondp" id="persecondQuestion">Gives you 0 bytes/s</p>
+          </div>
+          <div class="upgradeblock" id="fourthUp">
+            <p class="mainp">Attract sponsor</p><br>
+            <a href="#" id="attract" onclick="findSponsor()"><img class="autoclickers" src="img/sponsor.png" alt="4"></a><br>
+            <p class="secondp" id="costSponsor"> Bytes</p><br>
+            <p class="secondp" id="amountSponsors">You have 0 sponsors</p>
+            <p class="secondp" id="persecondSponsor">Gives you 0 bytes/s</p>
+          </div>
+          <div class="upgradeblock" id="fifthUp">
+            <p class="mainp">Write a website</p><br>
+            <a href="#" id="find" onclick="findSite()"><img class="autoclickers" src="img/wws.png" alt="5"></a><br>
+            <p class="secondp" id="costSite"> Bytes</p><br>
+            <p class="secondp" id="amountSite">You have 0 written sites</p><br>
+            <p class="secondp" id="persecondSite">Gives you 0 bytes/s</p>
+          </div>
           <br>
-        </div>
       </div>
       <div class="col col-xs-2 col-md-2 col-lg-2"></div>
       <div class="col col-xs-2 col-md-2 col-lg-2"></div>
@@ -73,10 +93,10 @@
       <div class="col-6 col-lg-2">
         <h4 class="ml-2">PC Upgrades</h4>
         <br>
-        <div class="upgradeblock">
+        <div class="upgradeblock" id="upgradePC">
           <p class="mainp" id="amountMultiplier">New Keyboards</p><br>
-          <a href="#" id="testing" onclick="buyMultiplier()"><img id="mp" class="autoclickers" src="img/keyboard.png" alt="4"></a><br>
-          <p class="secondp" id="costMultiplier">1000 Bytes</p><br>
+          <a href="#" id="testing" onclick="buyMultiplier()"><img id="mp" class="autoclickers" src="img/keyboard.png" alt="5"></a><br>
+          <p class="secondp" id="costMultiplier"></p><br>
           <p class="secondp" id="currentMultiplier">Your current speed is x1</p>
         </div>
       </div>

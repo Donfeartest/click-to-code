@@ -5,6 +5,8 @@ function save() {
   window.localStorage.setItem('multiplier', multiplier);
   window.localStorage.setItem('money', money);
   window.localStorage.setItem('question', question);
+  window.localStorage.setItem('coffee', coffee);
+  window.localStorage.setItem('site', site);
 }
 
 function load() {
@@ -20,5 +22,9 @@ function load() {
   money = parseInt(money);
   question = localStorage.getItem('question');
   question = parseInt(question);
+  coffee = localStorage.getItem('coffee');
+  coffee = parseInt(coffee);
+  site = localStorage.getItem('site');
+  site = parseInt(site);
   update();
 }

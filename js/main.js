@@ -4,41 +4,44 @@ var sponsors = 0;
 var multiplier = 1;
 var money = 0;
 var question = 0;
+var coffee = 0;
+var site = 0;
 
 // if (food > 0)
 
 function update() {
-  if (bytecount >= 1){
-  document.getElementById('codeWritten').value = bytecount + " bytes";
-}
-  // } if (bytecount >=Math.pow(10, 3)) {
-  //   document.getElementById('codeWritten').value = bytecount/Math.pow(10, 3) + " KB";
-  // }
-  // if (bytecount >= Math.pow(10, 6)){
-  // document.getElementById('codeWritten').value = bytecount/Math.pow(10, 6) + " MB";
-  // }
-  // if (bytecount >= Math.pow(10, 9)) {
-  //   document.getElementById('codeWritten').value = bytecount/Math.pow(10, 9) + " GB";
-  // }
-  // if (bytecount >= Math.pow(10, 12)) {
-  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 12) + " TB";
-  // }
-  // if (bytecount >= Math.pow(10, 15)) {
-  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 15) + " PB";
-  // }
-  // if (bytecount >= Math.pow(10, 18)) {
-  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 18) + " EB";
-  // }
-  // if (bytecount >= Math.pow(10, 21)) {
-  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 21) + " ZB";
-  // }
-  // if (bytecount >= Math.pow(10, 24)) {
-  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 24) + " YB";
-  // }
+
+  function numberAbr(bytecount) {
+    var newValue = bytecount;
+    if (bytecount >= 2 && bytecount < 1000) {
+      newValue = bytecount + " Bytes";
+      return newValue;
+    }
+    if (bytecount >= 1000) {
+        var suffixes = [" ", " Kilobytes", " Megabytes", " Gigabytes"," Terabytes"];
+        var suffixNum = Math.floor( (""+bytecount).length/3 );
+        var shortValue = '';
+        for (var precision = 4; precision >= 3; precision--) {
+            shortValue = parseFloat( (suffixNum != 0 ? (bytecount / Math.pow(1000,suffixNum) ) : bytecount).toPrecision(precision));
+            var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+            if (dotLessShortValue.length <= 4) { break; }
+        }
+        if (shortValue % 1 != 0)  shortNum = shortValue.toFixed(2);
+        newValue = shortValue+suffixes[suffixNum];
+    }
+    return newValue;
+  }
+    if (bytecount == 1) {
+    document.getElementById('codeWritten').value = bytecount + " Byte";
+    }
+
+    if (bytecount > 1) {
+    document.getElementById('codeWritten').value = numberAbr(bytecount);
+  }
 
   document.getElementById('moneyGot').value = money + " BTC";
 
-  document.getElementById('costMultiplier').innerHTML = ((multiplier+1)*1000) + " bytes";
+  document.getElementById('costMultiplier').innerHTML = "You need: "+((multiplier+1)*1000) + " bytes";
   document.getElementById('currentMultiplier').innerHTML = "Your current speed is x"+(multiplier);
   if (multiplier >= 3) {
     document.getElementById('mp').src = mp.src.replace("img/keyboard.png", "img/sponsor.png");
@@ -47,16 +50,28 @@ function update() {
     document.getElementById('amountMultiplier').innerHTML = "CPU upgrade"
     document.getElementById('mp').src = mp.src.replace("img/sponsor.png", "img/searching.png");
   }
-  document.getElementById('ammountFriends').innerHTML = "You have " + friends + " friends to help";
-  document.getElementById('costFriends').innerHTML = "You need: " + ((friends+1) * 10) + " Bytes of code";
 
-  document.getElementById('ammountQuestion').innerHTML = "You have " + question + " question asked";
-  document.getElementById('costQuestion').innerHTML = "You need: " + ((question+1) * 30) + " Bytes of code";
+  document.getElementById('amountCoffee').innerHTML = "You have " + coffee + " coffee n snacks";
+  document.getElementById('costCoffee').innerHTML = "You need: " + ((coffee+1) * 10) + " Bytes of code";
+  document.getElementById('persecondCoffee').innerHTML = "Gives you " + (coffee)*multiplier + " bytes/s"
+
+  document.getElementById('amountFriends').innerHTML = "You have " + friends + " friends to help";
+  document.getElementById('costFriends').innerHTML = "You need: " + ((friends+1) * 50) + " Bytes of code";
+  document.getElementById('persecondFriends').innerHTML = "Gives you " + (friends*2)*multiplier + " bytes/s";
+
+  document.getElementById('amountQuestion').innerHTML = "You have " + question + " question asked";
+  document.getElementById('costQuestion').innerHTML = "You need: " + ((question+1) * 100) + " Bytes of code";
+  document.getElementById('persecondQuestion').innerHTML = "Gives you " + (question*3)*multiplier + " bytes/s";
 
   document.getElementById('amountSponsors').innerHTML = "You have: " + sponsors + " sponsors";
-  document.getElementById('costSponsor').innerHTML = "You need: " + ((sponsors+1) * 90) + " Bytes of code";
+  document.getElementById('costSponsor').innerHTML = "You need: " + ((sponsors+1) * 250) + " Bytes of code";
+  document.getElementById('persecondSponsor').innerHTML = "Gives you " + (sponsors*4)*multiplier + " bytes/s";
 
-  document.getElementById('bytespersecond').innerHTML = "Your code is increasing by " + (((friends)+((question)*2)+(sponsors)*3)*multiplier) +  " bytes/s";
+  document.getElementById('amountSite').innerHTML = "You have: " + site + " sites";
+  document.getElementById('costSite').innerHTML = "You need: " + ((site+1) * 500) + " Bytes of code";
+  document.getElementById('persecondSite').innerHTML = "Gives you " + (site*5)*multiplier + " bytes/s";
+
+  document.getElementById('bytespersecond').innerHTML = "Your code is increasing by " + ((coffee)+((friends)*2)+((question)*3)+((sponsors)*4)+((site)*5))*multiplier +  " bytes/s";
 }
 
 
@@ -65,20 +80,26 @@ function timer() {
   if ( random === 30) {
     money = money+1;
   }
-  bytecount += friends*multiplier;
-  bytecount = bytecount + (sponsors*3)*multiplier;
-  bytecount = bytecount + (question*2)*multiplier;
+  bytecount += coffee*multiplier;
+  bytecount = bytecount + (friends*2)*multiplier;
+  bytecount = bytecount + (question*3)*multiplier;
+  bytecount = bytecount + (sponsors*4)*multiplier;
+  bytecount = bytecount + (site*5)*multiplier;
   update();
 }
 setInterval(timer, 1000);
 
 
 function deadlineMode() {
-  if (bytecount >= 500) {
-  bytecount = (bytecount+15)*multiplier;
+  if (bytecount <= 1000) {
+    document.getElementById("dlTrigger").style.display = 'block';
+  }
+  if (bytecount >= 1000) {
   var random = ~~(Math.random() * (50-1) +1 );
   if ( random > 25) {
-    bytecount = (bytecount-30)*multiplier;
+    bytecount = (bytecount-200)*multiplier;
+  } else {
+      bytecount = (bytecount+200)*multiplier;
   }
   }
   update();
@@ -90,16 +111,26 @@ function deadlineMode() {
 
 function add() {
   bytecount += multiplier;
-  var random = ~~(Math.random() * (100 - 1) + 1);
-  if ( random === 50) {
+  document.getElementById("dlTrigger").style.display = 'none';
+  document.getElementById("exchanged").innerHTML = "Exchange BTC for code"
+  var random = ~~(Math.random() * (50 - 1) + 1);
+  if ( random === 25) {
     money = money+1;
   }
   update();
 }
 
+function findSnacks() {
+  if(bytecount >= (coffee+1)*10) {
+    bytecount = bytecount - ((coffee+1)*10);
+    coffee += 1;
+    update();
+  }
+}
+
 function findFriends() {
-  if (bytecount >= (friends+1) * 10) {
-      bytecount = bytecount - ((friends+1) * 10);
+  if (bytecount >= (friends+1) * 50) {
+      bytecount = bytecount - ((friends+1) * 50);
       friends += 1;
       update();
     }
@@ -107,8 +138,8 @@ function findFriends() {
 }
 
 function findQuestion() {
-  if(bytecount >= (question+1)*30) {
-    bytecount = bytecount - ((question+1) * 30);
+  if(bytecount >= (question+1)*100) {
+    bytecount = bytecount - ((question+1) * 100);
     question += 1;
     update();
   }
@@ -116,8 +147,8 @@ function findQuestion() {
 }
 
 function findSponsor() {
-  if (bytecount >= (sponsors+1) * 90) {
-    bytecount = bytecount - ((sponsors+1) * 90);
+  if (bytecount >= (sponsors+1) * 250) {
+    bytecount = bytecount - ((sponsors+1) * 250);
     sponsors += 1;
     update();
   }
@@ -130,12 +161,22 @@ function buyMultiplier() {
     update();
   }
 }
-// var positiveNum = Number(val);
 
 function changeBytes() {
+  var random = ~~(Math.random() * (1000 - 100) + 1);
   if ( money > 0 ){
-    bytecount = bytecount + money*500;
+    bytecount = bytecount + money*random;
+    document.getElementById("exchanged").innerHTML = "Exchanged for: " + random*money + " Bytes";
     money = 0;
+
   }
   update();
+}
+
+function findSite() {
+  if (bytecount >= (site+1)*500) {
+    bytecount = bytecount - ((site+1)*500);
+    site += 1;
+    update();
+  }
 }

@@ -1,0 +1,14 @@
+#firstUp,#secondUp,#thirdUp,#upgradePC,#fourthUp,#fifthUp {
+  display: none;
+}
+
+#previewMsg {
+  display: block;
+}
+#previewMsg p {
+  font-size: 19px;
+}
+
+#dlTrigger {
+  display: none;
+}
