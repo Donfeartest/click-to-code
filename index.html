@@ -12,21 +12,31 @@
   <div id="main">
     <div class="container mt-2">
       <div class="row">
-      <div class="col"><h1 class="ml-2">Cl1ck T0 C0d3 v.1</h1>
+      <div class="col"><h1 class="ml-2">Cl1ck T0 C0d3 v.1.2</h1>
       <p class="ml-4"id="bytespersecond">Your code is increasing by 0 bytes/s</p><br>
       <a href="#" onclick="add()"><img src="img/work.png" id="work" alt="0"></a>
       <br>
       <div class="mt-3">
         <p>Your code weights:</p>
-        <input type="text" id="codeWritten" disabled style="text-align:center" value="0 bytes"> <p>So far.</p>
+        <input type="text" class="form-control" id="codeWritten" disabled style="text-align:center" value="0 bytes"> <p>So far.</p><br><br>
+        <div class="deadline">
+          <input type="submit" class="form-control ml-1" onclick="deadlineMode()" value="DeadLine"><br>
+          <p class="secondp">Write your code faster, but you could make a mistake. <br>you need at least 500 bytes</p>
+        </div>
       </div>
       </div>
       <div class="col">
+        <div class="mainfirst">
+          <a href="#" class="btn btn-success saveLoad" onclick="save()">Save</a>
+          <a href="#" class="btn btn-success saveLoad" onclick="load()">Load</a>
+          <a href="#" class="btn btn-success" id="play" onclick="play()">Music</a>
+          <a href="#" class="btn btn-success" id="stop" onclick="play()">Music</a>
+        </div>
         <div class="main">
-
-          <div class="bitcoinexc"><a href="#" onclick="changeBytes()"><img class="autoclickers" src="img/bitcoin.png" alt=""></a><br></div>
+          <div class="bitcoinexc">
+            <a href="#" onclick="changeBytes()"><img class="autoclickers" src="img/bitcoin.png" alt=""></a><br><p class="secondp">exchange BTC for code</p></div>
           <p>You have:</p>
-          <input type="text" id="moneyGot" disabled style="text-align:center" value="0 BTC"> <p>So far.</p>
+          <input type="text" class="form-control" id="moneyGot" disabled style="text-align:center" value="0 BTC"> <p>So far.</p>
         </div>
 
       </div>
@@ -34,7 +44,7 @@
     <br>
 
     <div class="row">
-      <div class="col-5 col-lg-2">
+      <div class="col-6 col-lg-2">
           <h4 class="ml-2">Upgrades</h4>
           <br>
           <div class="upgradeblock">
@@ -57,10 +67,10 @@
           <br>
         </div>
       </div>
-      <div class="col col-lg-2"></div>
-      <div class="col col-lg-2"></div>
+      <div class="col col-xs-2 col-md-2 col-lg-2"></div>
+      <div class="col col-xs-2 col-md-2 col-lg-2"></div>
 
-      <div class="col-5 col-lg-2">
+      <div class="col-6 col-lg-2">
         <h4 class="ml-2">PC Upgrades</h4>
         <br>
         <div class="upgradeblock">
@@ -71,13 +81,13 @@
         </div>
       </div>
     </div>
-    <div class="savebuttons mt-5 mb-2">
-      <button class="btn-sm btn-outline-success"><a href="#" class="saveLoad" onclick=save()>Save</a></button>
-      <button class="btn-sm btn-outline-success"><a href="#" class="saveLoad" onclick=load()>Load</a></button>
-    </div>
+
+
+
     <footer>
       <div class="copy"><span id="copy"></span></div>
     </footer>
+    <audio id="audio1"  src="audio/song1.mp3"></audio>
   </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

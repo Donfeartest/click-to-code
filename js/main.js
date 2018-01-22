@@ -5,13 +5,36 @@ var multiplier = 1;
 var money = 0;
 var question = 0;
 
+// if (food > 0)
 
 function update() {
   if (bytecount >= 1){
   document.getElementById('codeWritten').value = bytecount + " bytes";
-} if (bytecount >=1000) {
-    document.getElementById('codeWritten').value = bytecount/1000 + " kilobytes";
-  }
+}
+  // } if (bytecount >=Math.pow(10, 3)) {
+  //   document.getElementById('codeWritten').value = bytecount/Math.pow(10, 3) + " KB";
+  // }
+  // if (bytecount >= Math.pow(10, 6)){
+  // document.getElementById('codeWritten').value = bytecount/Math.pow(10, 6) + " MB";
+  // }
+  // if (bytecount >= Math.pow(10, 9)) {
+  //   document.getElementById('codeWritten').value = bytecount/Math.pow(10, 9) + " GB";
+  // }
+  // if (bytecount >= Math.pow(10, 12)) {
+  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 12) + " TB";
+  // }
+  // if (bytecount >= Math.pow(10, 15)) {
+  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 15) + " PB";
+  // }
+  // if (bytecount >= Math.pow(10, 18)) {
+  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 18) + " EB";
+  // }
+  // if (bytecount >= Math.pow(10, 21)) {
+  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 21) + " ZB";
+  // }
+  // if (bytecount >= Math.pow(10, 24)) {
+  //     document.getElementById('codeWritten').value = bytecount/Math.pow(10, 24) + " YB";
+  // }
 
   document.getElementById('moneyGot').value = money + " BTC";
 
@@ -36,7 +59,12 @@ function update() {
   document.getElementById('bytespersecond').innerHTML = "Your code is increasing by " + (((friends)+((question)*2)+(sponsors)*3)*multiplier) +  " bytes/s";
 }
 
+
 function timer() {
+  var random = ~~(Math.random() * (60 - 1) + 1);
+  if ( random === 30) {
+    money = money+1;
+  }
   bytecount += friends*multiplier;
   bytecount = bytecount + (sponsors*3)*multiplier;
   bytecount = bytecount + (question*2)*multiplier;
@@ -44,8 +72,24 @@ function timer() {
 }
 setInterval(timer, 1000);
 
+
+function deadlineMode() {
+  if (bytecount >= 500) {
+  bytecount = (bytecount+15)*multiplier;
+  var random = ~~(Math.random() * (50-1) +1 );
+  if ( random > 25) {
+    bytecount = (bytecount-30)*multiplier;
+  }
+  }
+  update();
+}
+
+// function normalMode() {
+//   bytecount = (bytecount+1)*multiplier;
+// }
+
 function add() {
-  bytecount += 1*multiplier;
+  bytecount += multiplier;
   var random = ~~(Math.random() * (100 - 1) + 1);
   if ( random === 50) {
     money = money+1;

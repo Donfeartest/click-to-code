@@ -1,6 +1,20 @@
 p,h2,h1,h3,h4,span {
   color: #20C20E;
 }
+
+.form-control {
+  display: inline-block !important;
+}
+
+
+.custom-select {
+  width: 200px;
+  margin-left: 100px;
+  margin-top: 5px;
+}
+.form-control {
+  width: 150px;
+}
 p {
   display: inline;
 }
@@ -30,8 +44,24 @@ body {
   border-radius: 40px;
 }
 
+#play,#stop {
+  margin-left: 50px;
+  margin-bottom: 55px;
+}
+
+.saveLoad {
+  margin-bottom: 55px;
+}
+
 .saveLoad a:active, a:visited {
-  color: #20C20E;
+  color: #191919;
+}
+.saveLoad a:hover {
+  color: #191919 !important;
+}
+
+.deadline {
+  margin-left: 25px;
 }
 
 .mainp {
@@ -44,6 +74,10 @@ body {
   border-radius: 50px;
 }
 
+.mainfirst {
+  margin-top: 55px;
+}
+
 .upgradeblock {
   padding: 5px;
   display: block;
@@ -53,11 +87,11 @@ body {
 }
 
 .bitcoinexc {
-  margin-left: 115px;
+  margin-left: 95px;
   margin-bottom: 20px;
 }
 .main {
-  margin-top: 210px;
+  margin-top: 40px;
 }
 
 #copy {
