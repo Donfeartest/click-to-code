@@ -12,8 +12,10 @@
 <body>
   <div id="main">
     <div class="container mt-2">
+      <h2 class="ml-2">Cl1ck T0 C0d3 v.1.4</h2>
       <div class="row">
-      <div class="col"><h1 class="ml-2">Cl1ck T0 C0d3 v.1.3</h1>
+
+      <div class="col asd mr-3">
       <p class="ml-4" id="bytespersecond">Your code is increasing by 0 bytes/s</p><br>
       <a href="#" id="mainclick" onclick="add()"><img src="img/work.png" id="work" alt="0"></a>
       <br>
@@ -21,12 +23,12 @@
         <p>Your code weights:</p>
         <input type="text" class="form-control" id="codeWritten" disabled style="text-align:center" value="0 bytes"> <p>So far.</p><br><br>
         <div class="deadline">
-          <input type="submit" class="form-control ml-1" onclick="deadlineMode()" value="DeadLine"><br>
-          <p class="secondp mt-1" id="dlTrigger">Write your code faster, but you could make a mistake. <br>you need at least 1500 bytes</p>
+          <input type="submit" class="form-control" onclick="deadlineMode()" value="DeadLine"><br>
+          <p class="secondp mt-1 ml-2" id="dlTrigger">Write your code faster, but you could make a mistake. <br>You need at least 1500 bytes</p>
         </div>
       </div>
       </div>
-      <div class="col">
+      <div class="col asd mr-3">
         <div class="mainfirst">
           <a href="#" class="btn btn-success saveLoad" onclick="save()">Save</a>
           <a href="#" class="btn btn-success saveLoad" onclick="load()">Load</a>
@@ -45,56 +47,72 @@
     <br>
 
     <div class="row">
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-lg-2 col-md-5">
           <h4 class="ml-2">Upgrades</h4>
           <br>
+          <div id="pages">
+            <a href="#" id="prevPage" class="btn btn-success prevPage">Prev</a>
+            <a href="#" id="nextPage" class="btn btn-success nextPage">Next</a>
+          </div>
           <div class="upgradeblock" id="previewMsg">
-          <p>Don't worry, when your code will get a bit better, you will see all those upgrades!</p></div>
-          <div class="upgradeblock" id="firstUp">
-            <p class="mainp">Grab coffee n snacks</p><br>
-            <a href="#" id="find" onclick="findSnacks()"><img class="autoclickers" src="img/cands.png" alt="1"></a><br>
-            <p class="secondp" id="costCoffee"> Bytes</p><br>
-            <p class="secondp" id="amountCoffee">You have 0 coffee n snacks</p><br>
-            <p class="secondp" id="persecondCoffee">Gives you 0 bytes/s</p>
+          <p>Don't worry, when you start writing your code, you will see all those upgrades!</p></div>
+          <div id="firstPage">
+            <div class="upgradeblock">
+              <p class="mainp">Grab coffee n snacks</p><br>
+              <a href="#" id="find" onclick="findSnacks()"><img class="autoclickers" src="img/cands.png" alt="1"></a><br>
+              <p class="secondp" id="costCoffee"> Bytes</p><br>
+              <p class="secondp" id="amountCoffee">You have 0 coffee n snacks</p><br>
+              <p class="secondp" id="persecondCoffee">Gives you 0 bytes/s</p>
+            </div>
+            <div class="upgradeblock">
+              <p class="mainp">Ask friends to help</p><br>
+              <a href="#" id="find" onclick="findFriends()"><img class="autoclickers" src="img/friend.png" alt="2"></a><br>
+              <p class="secondp" id="costFriends"> Bytes</p><br>
+              <p class="secondp" id="amountFriends">You have 0 friends to help</p><br>
+              <p class="secondp" id="persecondFriends">Gives you 0 bytes/s</p>
+            </div>
+
+            <div class="upgradeblock">
+              <p class="mainp">Searching on StuckOverFlood</p><br>
+              <a href="#" id="find" onclick="findQuestion()"><img class="autoclickers" src="img/searching.png" alt="3"></a><br>
+              <p class="secondp" id="costQuestion"> Bytes</p><br>
+              <p class="secondp" id="amountQuestion">You have asked 0 questions</p><br>
+              <p class="secondp" id="persecondQuestion">Gives you 0 bytes/s</p>
+            </div>
           </div>
-          <div class="upgradeblock" id="secondUp">
-            <p class="mainp">Ask friends to help</p><br>
-            <a href="#" id="find" onclick="findFriends()"><img class="autoclickers" src="img/friend.png" alt="2"></a><br>
-            <p class="secondp" id="costFriends"> Bytes</p><br>
-            <p class="secondp" id="amountFriends">You have 0 friends to help</p><br>
-            <p class="secondp" id="persecondFriends">Gives you 0 bytes/s</p>
-          </div>
-          <div class="upgradeblock" id="thirdUp">
-            <p class="mainp">Searching on StuckOverFlood</p><br>
-            <a href="#" id="find" onclick="findQuestion()"><img class="autoclickers" src="img/searching.png" alt="3"></a><br>
-            <p class="secondp" id="costQuestion"> Bytes</p><br>
-            <p class="secondp" id="amountQuestion">You have asked 0 questions</p><br>
-            <p class="secondp" id="persecondQuestion">Gives you 0 bytes/s</p>
-          </div>
-          <div class="upgradeblock" id="fourthUp">
-            <p class="mainp">Attract sponsor</p><br>
-            <a href="#" id="attract" onclick="findSponsor()"><img class="autoclickers" src="img/sponsor.png" alt="4"></a><br>
-            <p class="secondp" id="costSponsor"> Bytes</p><br>
-            <p class="secondp" id="amountSponsors">You have 0 sponsors</p>
-            <p class="secondp" id="persecondSponsor">Gives you 0 bytes/s</p>
-          </div>
-          <div class="upgradeblock" id="fifthUp">
-            <p class="mainp">Write a website</p><br>
-            <a href="#" id="find" onclick="findSite()"><img class="autoclickers" src="img/wws.png" alt="5"></a><br>
-            <p class="secondp" id="costSite"> Bytes</p><br>
-            <p class="secondp" id="amountSite">You have 0 written sites</p><br>
-            <p class="secondp" id="persecondSite">Gives you 0 bytes/s</p>
+          <div id="secondPage">
+            <div class="upgradeblock">
+              <p class="mainp">Attract sponsor</p><br>
+              <a href="#" id="attract" onclick="findSponsor()"><img class="autoclickers" src="img/sponsor.png" alt="4"></a><br>
+              <p class="secondp" id="costSponsor"> Bytes</p><br>
+              <p class="secondp" id="amountSponsors">You have 0 sponsors</p>
+              <p class="secondp" id="persecondSponsor">Gives you 0 bytes/s</p>
+            </div>
+            <div class="upgradeblock">
+              <p class="mainp">Write a website</p><br>
+              <a href="#" id="find" onclick="findSite()"><img class="autoclickers" src="img/wws.png" alt="5"></a><br>
+              <p class="secondp" id="costSite"> Bytes</p><br>
+              <p class="secondp" id="amountSite">You have 0 written sites</p><br>
+              <p class="secondp" id="persecondSite">Gives you 0 bytes/s</p>
+            </div>
+            <div class="upgradeblock">
+              <p class="mainp">Write a script</p><br>
+              <a href="#" id="find" onclick="writeScript()"><img class="autoclickers" src="img/script.png" alt="6"></a><br>
+              <p class="secondp" id="costScript"> Bytes</p><br>
+              <p class="secondp" id="amountScript">You have 0 written scripts</p><br>
+              <p class="secondp" id="persecondScript">Gives you 0 bytes/s</p>
+            </div>
           </div>
           <br>
       </div>
-      <div class="col col-xs-2 col-md-2 col-lg-2"></div>
-      <div class="col col-xs-2 col-md-2 col-lg-2"></div>
+      <div class="col-md-1 col-lg-2"></div>
+      <div class="col-md-1 col-lg-2"></div>
 
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-lg-2 col-md-5">
         <h4 class="ml-2">PC Upgrades</h4>
         <br>
         <div class="upgradeblock" id="upgradePC">
-          <p class="mainp" id="amountMultiplier">New Keyboards</p><br>
+          <p class="mainp" id="amountMultiplier">CPU upgrade</p><br>
           <a href="#" id="testing" onclick="buyMultiplier()"><img id="mp" class="autoclickers" src="img/keyboard.png" alt="5"></a><br>
           <p class="secondp" id="costMultiplier"></p><br>
           <p class="secondp" id="currentMultiplier">Your current speed is x1</p>

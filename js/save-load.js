@@ -7,6 +7,7 @@ function save() {
   window.localStorage.setItem('question', question);
   window.localStorage.setItem('coffee', coffee);
   window.localStorage.setItem('site', site);
+  window.localStorage.setItem('script', script);
 }
 
 function load() {
@@ -26,5 +27,7 @@ function load() {
   coffee = parseInt(coffee);
   site = localStorage.getItem('site');
   site = parseInt(site);
+  script = local.store.getItem('script');
+  script = parseInt(script);
   update();
 }

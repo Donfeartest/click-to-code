@@ -33,8 +33,6 @@ body {
     top: 0;
     left: 0;
     background-image: url("img/bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 100%;
     height: 100%;
     opacity : 0.05;
@@ -75,20 +73,28 @@ body {
   border-radius: 50px;
 }
 
-.mainfirst {
+.mainfirst,.main {
   margin-top: 55px;
+  text-align: center;
+}
+.asd {
+  text-align: center;
 }
 
 .upgradeblock {
   padding: 5px;
   display: block;
+  background-color: rgba(25,25,25,0.9);
   border: 2px solid #20C20E;
   border-radius: 10px;
   margin-bottom: 5px;
 }
+#upgradePC {
+  margin-top: 55px;
+}
 
 .bitcoinexc {
-  margin-left: 95px;
+  margin-left: 22px;
   margin-bottom: 20px;
 }
 .main {
@@ -100,4 +106,16 @@ body {
   opacity: 0.2;
   font-size: 14px;
   text-align: right;
+}
+
+#pages {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.asd {
+  background-color: rgba(25,25,25,0.7);
+  padding: 15px;
+  border-radius: 50px;
+  border: 1px solid #20C20E;
 }

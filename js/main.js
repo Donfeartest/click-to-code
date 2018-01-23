@@ -6,8 +6,8 @@ var money = 0;
 var question = 0;
 var coffee = 0;
 var site = 0;
-
-// if (food > 0)
+var script = 0;
+// food = 0;
 
 function update() {
 
@@ -39,17 +39,21 @@ function update() {
     document.getElementById('codeWritten').value = numberAbr(bytecount);
   }
 
+
   document.getElementById('moneyGot').value = money + " BTC";
+
 
   document.getElementById('costMultiplier').innerHTML = "You need: "+((multiplier+1)*1000) + " bytes";
   document.getElementById('currentMultiplier').innerHTML = "Your current speed is x"+(multiplier);
-  if (multiplier >= 3) {
-    document.getElementById('mp').src = mp.src.replace("img/keyboard.png", "img/sponsor.png");
-    document.getElementById('amountMultiplier').innerHTML = "RAM upgrade"
-  } if (multiplier >= 5) {
-    document.getElementById('amountMultiplier').innerHTML = "CPU upgrade"
-    document.getElementById('mp').src = mp.src.replace("img/sponsor.png", "img/searching.png");
-  }
+
+
+  // if (multiplier >= 3) {
+  //   document.getElementById('mp').src = mp.src.replace("img/keyboard.png", "img/sponsor.png");
+  //   document.getElementById('amountMultiplier').innerHTML = "RAM upgrade"
+  // } if (multiplier >= 5) {
+  //   document.getElementById('amountMultiplier').innerHTML = "CPU upgrade"
+  //   document.getElementById('mp').src = mp.src.replace("img/sponsor.png", "img/searching.png");
+  // }
 
   document.getElementById('amountCoffee').innerHTML = "You have " + coffee + " coffee n snacks";
   document.getElementById('costCoffee').innerHTML = "You need: " + ((coffee+1) * 10) + " Bytes of code";
@@ -71,20 +75,25 @@ function update() {
   document.getElementById('costSite').innerHTML = "You need: " + ((site+1) * 500) + " Bytes of code";
   document.getElementById('persecondSite').innerHTML = "Gives you " + (site*5)*multiplier + " bytes/s";
 
-  document.getElementById('bytespersecond').innerHTML = "Your code is increasing by " + ((coffee)+((friends)*2)+((question)*3)+((sponsors)*4)+((site)*5))*multiplier +  " bytes/s";
+  document.getElementById('amountScript').innerHTML = "You have: " + script + " sites";
+  document.getElementById('costScript').innerHTML = "You need: " + ((script+1) * 1000) + " Bytes of code";
+  document.getElementById('persecondScript').innerHTML = "Gives you " + (script*6)*multiplier + " bytes/s";
+
+  document.getElementById('bytespersecond').innerHTML = "Your code is increasing by " + ((coffee)+((friends)*2)+((question)*3)+((sponsors)*4)+((site)*5)+((script)*6))*multiplier +  " bytes/s";
 }
 
 
 function timer() {
   var random = ~~(Math.random() * (60 - 1) + 1);
   if ( random === 30) {
-    money = money+1;
+    money += 1;
   }
   bytecount += coffee*multiplier;
   bytecount = bytecount + (friends*2)*multiplier;
   bytecount = bytecount + (question*3)*multiplier;
   bytecount = bytecount + (sponsors*4)*multiplier;
   bytecount = bytecount + (site*5)*multiplier;
+  bytecount = bytecount + (script*6)*multiplier;
   update();
 }
 setInterval(timer, 1000);
@@ -97,18 +106,22 @@ function deadlineMode() {
     if (bytecount >= 1500) {
     if (multiplier <= 5) {
     var random = ~~(Math.random() * (50-1) +1 );
-    if ( random >= 25) {
-      bytecount = bytecount-(200*multiplier);
-    } if ( random < 25 ) {
-      bytecount = bytecount+(200*multiplier);
-    }
+    // if ( random >= 25) {
+    //   bytecount = bytecount-(200*multiplier);
+    // } if ( random < 25 ) {
+    //   bytecount = bytecount+(200*multiplier);
+    // }
+    var deadLine1 = ( random >= 25 ) ? bytecount += (200*multiplier) : bytecount -= ( 200*multiplier);
+    return deadLine1;
     } if (multiplier > 5) {
     var random = ~~(Math.random() * (50-1) +1 );
-    if ( random >= 25) {
-    bytecount = bytecount + (200*5);
-    } if ( random < 25) {
-    bytecount = bytecount - (200*5);
-    }
+    var deadLine2 = ( random >= 25 ) ? bytecount += (200*5) : bytecount -= (200*5);
+    return deadLine2;
+    // if ( random >= 25) {
+    // bytecount = bytecount + (200*5);
+    // } if ( random < 25) {
+    // bytecount = bytecount - (200*5);
+    // }
     }
     }
   update();
@@ -167,6 +180,13 @@ function buyMultiplier() {
   if (bytecount >= (multiplier+1)*1000) {
     bytecount = bytecount - ((multiplier+1) * 1000);
     multiplier += 1;
+    if (multiplier >= 2) {
+      var pcParts = ["RAM upgrade", "CPU upgrade", "SSD upgrade", "HDD upgrade",
+      "GPU upgrade","PSU upgrade", "Mouse upgrade", "MotherBoard upgrade",
+      "Monitor upgrade","Keyboard upgrade", "Fans upgrade", "Case upgrade"];
+      var randomPart = pcParts[(Math.random() * pcParts.length) | 0]
+        document.getElementById('amountMultiplier').innerHTML = randomPart;
+    }
     update();
   }
 }
@@ -186,6 +206,14 @@ function findSite() {
   if (bytecount >= (site+1)*500) {
     bytecount = bytecount - ((site+1)*500);
     site += 1;
+    update();
+  }
+}
+
+function writeScript() {
+  if (bytecount >= (script+1)*1000) {
+    bytecount = bytecount - ((script+1)*1000);
+    script += 1;
     update();
   }
 }

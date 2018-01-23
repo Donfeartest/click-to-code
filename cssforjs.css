@@ -1,4 +1,4 @@
-#firstUp,#secondUp,#thirdUp,#upgradePC,#fourthUp,#fifthUp {
+#firstUp,#secondUp,#thirdUp,#fourthUp,#fifthUp {
   display: none;
 }
 
@@ -10,5 +10,9 @@
 }
 
 #dlTrigger {
+  display: none;
+}
+
+#firstPage, #secondPage {
   display: none;
 }
